@@ -5,20 +5,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 const App = () => {
 
     const [myOptions, setMyOptions] = useState([])
-    const [locations, setLocations] = useState([])
-    const addLocation = (id, displayString, longitude, latitude) => {
-        const location = {
-            'id': id,
-            'displayString': displayString,
-            'longitude': longitude,
-            'latitude': latitude
-        }
-        let locationsCopy = [...locations];
-        locationsCopy.push(location);
-        setLocations(locationsCopy);
-        console.log("Pushed location" + id + " " + displayString);
-        console.log("Locations size after push " + locations.length);
-    }
+    const [locations] = useState([])
+
 
     const getDataFromAPI = () => {
         let searchString = document.getElementById('search-box').value
@@ -28,42 +16,29 @@ const App = () => {
                 return response.json()
             }).then((responseJson) => {
                 responseJson.forEach((item) => {
-                    let displayString = '';
-                    let id = null;
-                    let longitude = null;
-                    let latitude = null;
                     let location = new Object();
                     Object.entries(item).forEach(([key, value]) => {
-                        // console.log(`${key}: ${value}`);
                         if (key === 'name' || key === 'administrative_area' || key === 'country') {
                             if (value != null) {
-                                if (displayString == null) {
-                                    displayString = value;
-                                    location.displayString = displayString;
+                                if (location.displayString == null) {
+                                    location.displayString = value;
                                 } else {
-                                    displayString = displayString + " " + value;
-                                    location.displayString = displayString;
+                                    location.displayString += " " + value;
                                 }
                             }
                         }
                         if (key === 'id') {
-                            id = value;
                             location.id = value;
                         }
                         if (key === 'longitude') {
-                            longitude = value;
                             location.longitude = value;
                         }
                         if (key === 'latitude') {
-                            latitude = value;
                             location.latitude = value;
                         }
                     });
-                    myOptions.push(displayString)
+                    myOptions.push(location.displayString)
                     locations.push(location);
-                    console.log("Pushing " + location.displayString);
-                    console.log("Size after push " + locations.length);
-                    // addLocation(id, displayString, longitude, latitude);
                 })
                 setMyOptions(myOptions)
             })
@@ -73,10 +48,7 @@ const App = () => {
     }
 
     const findDetails = (locationString) => {
-        console.log("Location string " + locationString);
-        console.log("Locations size: " + locations.length);
         locations.forEach((item) => {
-            console.log("Comparing " + item.displayString + " " + item.id);
             if (item.displayString == locationString) {
                 console.log(item.id);
                 console.log(item.displayString);
@@ -101,8 +73,6 @@ const App = () => {
 
                     <TextField {...params}
                                onChange={getDataFromAPI}
-                        //     onClick={handleLocationChoice}
-                        //      onSelect={handleLocationChoice}
                                onKeyPress={handleLocationChoice}
                                variant="outlined"
                                label="Search Box"
