@@ -5,6 +5,7 @@ import Results from "./Results";
 import './SearchBox.css'
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
+import MyMap from "./Map";
 
 const App = () => {
 
@@ -83,6 +84,7 @@ const App = () => {
 
     return (
         <div>
+            <MyMap/>
             <h1 className={'header'}><WbSunnyIcon/> Weather comparator <NightsStayIcon/></h1>
             <div className={'search-box-style'}>
                 <Autocomplete
