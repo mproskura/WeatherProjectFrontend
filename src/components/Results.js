@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {get} from "leaflet/src/dom/DomUtil";
 import ResultByDate from "./ResultByDate";
+import './Results.css'
 
 const Results = (props) => {
     const [location, setLocation] = useState(props.location);
@@ -25,7 +25,11 @@ const Results = (props) => {
 
     return (
         <div>
-            <ResultByDate id={location.id} date={dateToday}/>
+            <table className={'table-style'}>
+                <tbody>
+                <ResultByDate id={location.id} date={dateToday}/>
+                </tbody>
+            </table>
         </div>
     )
 
