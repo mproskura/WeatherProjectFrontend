@@ -35,29 +35,12 @@ const ResultByDate = (props) => {
         }
     }, [props.id])
 
-
-    // forecastDetails.map(forecastDetails => {
-    //         return (
-    //             <div>
-    //                 {forecastDetails.map(forecastDetail => (
-    //                     //  console.log("Test z petli " + forecastDetail.weatherSource)
-    //                     <ResultDetail forecast={forecastDetail}/>
-    //                 ))}
-    //             </div>
-    //         )
-    //     }
-    // )
-
     return (
-        // forecastDetails.map(forecastDetail =>
-        //     <div key={forecastDetail.id}><ResultDetail forecast={forecastDetail}/></div>
-        // )
 
+            forecastDetails.map(forecastDetail =>
+                <ResultDetail forecast={forecastDetail}/>
+            )
 
-        forecastDetails.map(forecastDetail =>
-            <ResultDetail forecast={forecastDetail}/>
-        )
-    
     )
 }
 

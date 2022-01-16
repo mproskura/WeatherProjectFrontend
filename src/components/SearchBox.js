@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Map from "./Map";
 import Results from "./Results";
+import './SearchBox.css'
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import NightsStayIcon from '@mui/icons-material/NightsStay';
 
 const App = () => {
 
@@ -75,25 +77,24 @@ const App = () => {
     }, [selectedLocation])
 
     return (
-        <div style={{margin: '20%', marginTop: '60px'}}>
-            <h3>Test</h3>
+        <div>
+            <h1><WbSunnyIcon/> Weather comparator <NightsStayIcon/></h1>
             <Autocomplete
-                style={{width: 500}}
+
                 id='search-box'
                 autoComplete
                 autoHighlight
                 options={myOptions}
                 renderInput={(params) => (
 
-                    <TextField {...params}
+                    <TextField className='search-box-style' {...params}
                                onChange={getDataFromAPI}
                                onKeyPress={handleLocationChoice}
                                variant="outlined"
-                               label="Search Box"
+                               label="Search weather"
                     />
                 )}
             />
-            Location id w search boxie {selectedLocation.id}
             <Results location={selectedLocation}/>
         </div>
     );

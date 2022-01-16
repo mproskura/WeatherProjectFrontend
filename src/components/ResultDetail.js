@@ -11,8 +11,7 @@ const ResultDetail = (props) => {
     console.log("Temp " + props.forecast.airTemperature)
 
     return (
-        <table>
-            <tbody>
+
             <row className={'column-style'}>
                 <td>{props.forecast.weatherSource}</td>
                 <td><DeviceThermostatIcon/> {props.forecast.airTemperature}°C</td>
@@ -21,8 +20,7 @@ const ResultDetail = (props) => {
                 <td><InvertColorsIcon/> {props.forecast.humidity}%</td>
                 <td><AirIcon/> {props.forecast.windDirection}° {props.forecast.windSpeed}km/h</td>
             </row>
-            </tbody>
-        </table>
+
     )
 }
 

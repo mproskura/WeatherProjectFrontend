@@ -28,6 +28,8 @@ const Results = (props) => {
             <table className={'table-style'}>
                 <tbody>
                 <ResultByDate id={location.id} date={dateToday}/>
+                <ResultByDate id={location.id} date={dateTomorrow}/>
+                <ResultByDate id={location.id} date={dateDayAfterTomorrow}/>
                 </tbody>
             </table>
         </div>
