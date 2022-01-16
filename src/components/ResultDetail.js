@@ -12,14 +12,14 @@ const ResultDetail = (props) => {
 
     return (
 
-            <row className={'column-style'}>
+            <tr>
                 <td>{props.forecast.weatherSource}</td>
                 <td><DeviceThermostatIcon/> {props.forecast.airTemperature}°C</td>
                 <td><SpeedIcon/> {props.forecast.airPressure}hPa</td>
                 <td><CloudIcon/> {props.forecast.cloudiness}%</td>
                 <td><InvertColorsIcon/> {props.forecast.humidity}%</td>
                 <td><AirIcon/> {props.forecast.windDirection}° {props.forecast.windSpeed}km/h</td>
-            </row>
+            </tr>
 
     )
 }

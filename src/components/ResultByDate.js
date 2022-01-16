@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import ResultDetail from "./ResultDetail";
-import {render} from "react-dom";
+import './ResultByDate.css'
 
 const ResultByDate = (props) => {
     let [forecastDetails, setForecastDetails] = useState([]);
@@ -35,23 +35,29 @@ const ResultByDate = (props) => {
         }
     }, [props.id]);
 
+    function dateRow() {
+        if (props.id != null) {
+            console.log("Generuje wiersz z datami");
+            return <row className={'date-row-style'}><td>{props.day} {props.date}</td></row>;
+        }
+    }
+
 
     return (
         <>
-            <tr>
-                <td>
-                    {props.date}
-                </td>
-            </tr>
-            {
-                forecastDetails.map(forecastDetail =>
-                    <tr>
-                        <td>
-                            <ResultDetail key={forecastDetail.id} forecast={forecastDetail}/>
-                        </td>
-                    </tr>
-                )
-            }
+            <div>
+                {dateRow()}
+            </div>
+            <div>
+                {
+                    forecastDetails.map(forecastDetail =>
+                        <ResultDetail key={forecastDetail.id} forecast={forecastDetail}/>
+                    )
+                }
+            </div>
+            <div>
+                <row className={'date-row-style'}><td/></row>
+            </div>
         </>
     )
 }
