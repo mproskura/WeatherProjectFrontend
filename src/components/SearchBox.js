@@ -55,10 +55,14 @@ const App = () => {
     const findDetails = (locationString) => {
         locations.forEach((item) => {
             if (item.displayString == locationString) {
-                selectedLocation.id = item.id;
-                selectedLocation.longitude = item.longitude;
-                selectedLocation.latitude = item.latitude;
-                selectedLocation.displayString = item.displayString;
+                setSelectedLocation(
+                    {
+                        "id": item.id,
+                        "longitude": item.longitude,
+                        "latitude": item.latitude,
+                        "displayString": item.displayString,
+                    }
+                )
                 console.log(item.id);
                 console.log(item.displayString);
             }
@@ -66,36 +70,37 @@ const App = () => {
     }
 
     const handleLocationChoice = (e) => {
-        findDetails(document.getElementById('search-box').value);
         if (e.key === 'Enter') {
-            setSelectedLocation2(selectedLocation);
+            findDetails(document.getElementById('search-box').value);
+            console.log('Setting selected location' )
         }
     }
 
     useEffect(() => {
-        console.log(selectedLocation)
+        console.log('Setting selected location2:' )
+        setSelectedLocation2(selectedLocation);
     }, [selectedLocation])
 
     return (
         <div>
-            <h1><WbSunnyIcon/> Weather comparator <NightsStayIcon/></h1>
-            <Autocomplete
-
-                id='search-box'
-                autoComplete
-                autoHighlight
-                options={myOptions}
-                renderInput={(params) => (
-
-                    <TextField className='search-box-style' {...params}
-                               onChange={getDataFromAPI}
-                               onKeyPress={handleLocationChoice}
-                               variant="outlined"
-                               label="Search weather"
-                    />
-                )}
-            />
-            <Results location={selectedLocation}/>
+            <h1 className={'header'}><WbSunnyIcon/> Weather comparator <NightsStayIcon/></h1>
+            <div className={'search-box-style'}>
+                <Autocomplete
+                    id='search-box'
+                    autoComplete
+                    autoHighlight
+                    options={myOptions}
+                    renderInput={(params) => (
+                        <TextField  {...params}
+                                    onChange={getDataFromAPI}
+                                    onKeyPress={handleLocationChoice}
+                                    variant="outlined"
+                                    label="Search weather"
+                        />
+                    )}
+                />
+            </div>
+            <Results location={selectedLocation2}/>
         </div>
     );
 }

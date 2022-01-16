@@ -33,14 +33,26 @@ const ResultByDate = (props) => {
                 }
             )
         }
-    }, [props.id])
+    }, [props.id]);
+
 
     return (
-
-            forecastDetails.map(forecastDetail =>
-                <ResultDetail forecast={forecastDetail}/>
-            )
-
+        <>
+            <tr>
+                <td>
+                    {props.date}
+                </td>
+            </tr>
+            {
+                forecastDetails.map(forecastDetail =>
+                    <tr>
+                        <td>
+                            <ResultDetail key={forecastDetail.id} forecast={forecastDetail}/>
+                        </td>
+                    </tr>
+                )
+            }
+        </>
     )
 }
 
