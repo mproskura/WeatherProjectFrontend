@@ -1,12 +1,15 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Map from "./Map";
+import Results from "./Results";
 
 const App = () => {
 
     const [myOptions, setMyOptions] = useState([])
+    const [selectedLocation2, setSelectedLocation2] = useState({})
     const [locations] = useState([])
-
+    const [selectedLocation, setSelectedLocation] = useState({});
 
     const getDataFromAPI = () => {
         let searchString = document.getElementById('search-box').value
@@ -50,18 +53,29 @@ const App = () => {
     const findDetails = (locationString) => {
         locations.forEach((item) => {
             if (item.displayString == locationString) {
+                selectedLocation.id = item.id;
+                selectedLocation.longitude = item.longitude;
+                selectedLocation.latitude = item.latitude;
+                selectedLocation.displayString = item.displayString;
                 console.log(item.id);
                 console.log(item.displayString);
             }
         })
     }
 
-    const handleLocationChoice = () => {
+    const handleLocationChoice = (e) => {
         findDetails(document.getElementById('search-box').value);
+        if (e.key === 'Enter') {
+            setSelectedLocation2(selectedLocation);
+        }
     }
 
+    useEffect(() => {
+        console.log(selectedLocation)
+    }, [selectedLocation])
+
     return (
-        <div style={{marginLeft: '40%', marginTop: '60px'}}>
+        <div style={{margin: '20%', marginTop: '60px'}}>
             <h3>Test</h3>
             <Autocomplete
                 style={{width: 500}}
@@ -79,6 +93,8 @@ const App = () => {
                     />
                 )}
             />
+            Location id w search boxie {selectedLocation.id}
+            <Results location={selectedLocation}/>
         </div>
     );
 }

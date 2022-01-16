@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import SearchBox from "./components/SearchBox";
+import Map from "./components/Map";
+
 
 function App() {
     return (
@@ -20,6 +22,7 @@ function App() {
             {/*    </a>*/}
             {/*</header>*/}
             <SearchBox/>
+
         </div>
     );
 }
