@@ -73,6 +73,7 @@ const App = () => {
     const handleLocationChoice = (e) => {
         if (e.key === 'Enter') {
             findDetails(document.getElementById('search-box').value);
+
             console.log('Setting selected location' )
         }
     }
@@ -84,7 +85,7 @@ const App = () => {
 
     return (
         <div>
-            <MyMap/>
+            <MyMap location={selectedLocation2}/>
             <h1 className={'header'}><WbSunnyIcon/> Weather comparator <NightsStayIcon/></h1>
             <div className={'search-box-style'}>
                 <Autocomplete
