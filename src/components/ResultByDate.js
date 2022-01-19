@@ -22,7 +22,7 @@ const ResultByDate = (props) => {
                             "airTemperature": detail.airTemperature,
                             "cloudiness": detail.cloudiness,
                             "humidity": detail.humidity,
-                            "weatherSource": detail.weatherSource.sourceName,
+                            "weatherSource": detail.weatherSource.id,
                             "windDirection": detail.windDirection,
                             "windSpeed": detail.windSpeed,
                         };

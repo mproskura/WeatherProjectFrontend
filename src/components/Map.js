@@ -16,7 +16,8 @@ function SetView(props) {
     const zoom = props.newZoom;
     console.log("New zoom " + zoom);
     const map = useMap();
-    map.setView(coords, zoom);
+    //map.setView(coords, zoom);
+    map.flyTo(coords, zoom )
     return null;
 }
 
