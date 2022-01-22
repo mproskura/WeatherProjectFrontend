@@ -14,7 +14,6 @@ import './Map.css';
 function SetView(props) {
     const coords =props.coords;
     const zoom = props.newZoom;
-    console.log("New zoom " + zoom);
     const map = useMap();
     //map.setView(coords, zoom);
     map.flyTo(coords, zoom )
@@ -33,9 +32,6 @@ export default function MyMap(props) {
         setLatitude(props.location.latitude);
         setZoom(12.0);
     }
-    console.log("Longitude is set to " + longitude);
-    console.log("Latitude is set to " + latitude);
-    console.log("Zoom is set to " + zoom);
 
     return (
         <MapContainer center={[latitude, longitude]} zoom={[zoom]} scrollWheelZoom={false}>

@@ -1,22 +1,41 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ResultByDate from "./ResultByDate";
 import './Results.css'
 
 const Results = (props) => {
 
-    const date = new Date();
-    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    const dateToday = date.getFullYear() + '-' + dateSegmentFormatter(date.getMonth() + 1) + '-' + dateSegmentFormatter(date.getDate());
-    const dayToday = weekday[date.getDay()];
-    date.setDate(date.getDate() + 1)
-    const dateTomorrow = date.getFullYear() + '-' + dateSegmentFormatter(date.getMonth() + 1) + '-' + dateSegmentFormatter(date.getDate());
-    const dayTomorrow= weekday[date.getDay()];
-    date.setDate(date.getDate() + 1)
-    const dateDayAfterTomorrow = date.getFullYear() + '-' + dateSegmentFormatter(date.getMonth() + 1) + '-' + dateSegmentFormatter(date.getDate());
-    const dayDayAfterTomorrow= weekday[date.getDay()];
-    console.log("Data pojutrze " + dateDayAfterTomorrow);
-    console.log("Id w Results: " + props.location.id)
-    console.log(props)
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let loopDate = new Date(props.startDate);
+    let loopEndDate = new Date(props.endDate);
+    loopEndDate.setDate(loopEndDate.getDate() + 1);
+    const [dates, setDates] = useState([]);
+    const [resultList, setResultList] = useState([]);
+
+    useEffect(() => {
+        setDates([]);
+        setResultList([]);
+        let newResults = [];
+        while (loopDate < loopEndDate) {
+            console.log("Data z petli: " + dateFormatter(loopDate));
+            let formattedDate = dateFormatter(loopDate);
+            console.log("Formatted date  " + formattedDate);
+            dates.push(formattedDate);
+            let weekdayName = weekday[loopDate.getDay()];
+            console.log("Weekday name " + weekdayName);
+            let resultByDate = <ResultByDate id={props.location.id} date={formattedDate} day={weekdayName}/>;
+            newResults.push(resultByDate);
+            let newDate = loopDate.setDate(loopDate.getDate() + 1);
+            loopDate = new Date(newDate);
+        }
+        setResultList(newResults);
+
+        console.log("Dlugosc listy " + resultList.length);
+    }, [props])
+
+    function dateFormatter(date) {
+        let returnDate = date.getFullYear() + '-' + dateSegmentFormatter(date.getMonth() + 1) + '-' + dateSegmentFormatter(date.getDate());
+        return returnDate;
+    }
 
     function dateSegmentFormatter(dateSegment) {
         if (dateSegment < 10) {
@@ -26,14 +45,11 @@ const Results = (props) => {
         }
     }
 
-
     return (
         <div>
             <table className={'table-style'}>
                 <tbody>
-                <ResultByDate id={props.location.id} date={dateToday} day={dayToday}/>
-                <ResultByDate id={props.location.id} date={dateTomorrow} day={dayTomorrow}/>
-                <ResultByDate id={props.location.id} date={dateDayAfterTomorrow} day={dayDayAfterTomorrow}/>
+                {resultList}
                 </tbody>
             </table>
         </div>
@@ -41,5 +57,4 @@ const Results = (props) => {
 
 }
 
-export default Results
-;
+export default Results;

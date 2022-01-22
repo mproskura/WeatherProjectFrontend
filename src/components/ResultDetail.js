@@ -10,11 +10,7 @@ import {useEffect, useState} from "react";
 
 const ResultDetail = (props) => {
 
-    console.log("Result detail " + props.forecast.weatherSource)
-    console.log("Temp " + props.forecast.airTemperature)
-
     return (
-
         <tr>
             <td title="Weather service"><ServiceLogo weatherSource={props.forecast.weatherSource}/></td>
             <td title="Air temperature"><DeviceThermostatIcon/> {props.forecast.airTemperature}°C</td>

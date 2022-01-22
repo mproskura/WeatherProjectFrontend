@@ -19,7 +19,7 @@ const App = () => {
     defaultEndDate.setDate(defaultEndDate.getDate() + 2);
     const [endDate, setEndDate] = useState(defaultEndDate);
     const maxDate = new Date();
-    maxDate.setDate(maxDate.getDate() + 13);
+    maxDate.setDate(maxDate.getDate() + 9);
 
     const getDataFromAPI = () => {
         let searchString = document.getElementById('search-box').value
@@ -112,13 +112,13 @@ const App = () => {
                     />
                 </div>
                 <div className={'date-pickers'}>
-                  Start date:  <DatePicker value={startDate} minDate={today} maxDate={maxDate}
+                  Start date:  <DatePicker value={startDate} minDate={today} maxDate={maxDate} required={true}
                                 onChange={(date) => setStartDate(date)}/>
-                  End date:  <DatePicker value={endDate} minDate={startDate} maxDate={maxDate}
+                  End date:  <DatePicker value={endDate} minDate={startDate} maxDate={maxDate} required={true}
                                 onChange={(date) => setEndDate(date)}/>
                 </div>
             </div>
-            <Results location={selectedLocation2}/>
+            <Results location={selectedLocation2} startDate={startDate} endDate={endDate}/>
         </div>
     );
 }

@@ -9,7 +9,6 @@ function App() {
     return (
         <div className="App">
             <SearchBox/>
-            {/*<ServiceLogo weatherSource={"1"}/>*/}
         </div>
     );
 }
