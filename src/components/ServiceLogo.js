@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-
+import './ServiceLogo.css'
 
 const ServiceLogo = (props) => {
     console.log("Service id for logo: " + props.weatherSource);
@@ -18,7 +18,7 @@ const ServiceLogo = (props) => {
     }, [props.weatherSource])
 
     return <div>
-        <img src={serviceLogo} className="Logo" alt="No image fetched"/>
+        <img src={serviceLogo} className="logo" alt="No image fetched"/>
     </div>
 }
 
