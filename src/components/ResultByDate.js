@@ -50,7 +50,7 @@ const ResultByDate = (props) => {
             </div>
             <div>
                 {
-                    forecastDetails.map(forecastDetail =>
+                    forecastDetails.sort((a,b)=> a.id - b.id).map(forecastDetail =>
                         <ResultDetail key={forecastDetail.id} forecast={forecastDetail}/>
                     )
                 }

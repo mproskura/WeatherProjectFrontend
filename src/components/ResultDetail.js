@@ -16,12 +16,12 @@ const ResultDetail = (props) => {
     return (
 
         <tr>
-            <td><ServiceLogo weatherSource={props.forecast.weatherSource}/></td>
-            <td><DeviceThermostatIcon/> {props.forecast.airTemperature}°C</td>
-            <td><SpeedIcon/> {props.forecast.airPressure}hPa</td>
-            <td><CloudIcon/> {props.forecast.cloudiness}%</td>
-            <td><InvertColorsIcon/> {props.forecast.humidity}%</td>
-            <td><AirIcon/> {props.forecast.windDirection}° {props.forecast.windSpeed}km/h</td>
+            <td title="Weather service"><ServiceLogo weatherSource={props.forecast.weatherSource}/></td>
+            <td title="Air temperature"><DeviceThermostatIcon/> {props.forecast.airTemperature}°C</td>
+            <td title="Air pressure"><SpeedIcon/> {props.forecast.airPressure}hPa</td>
+            <td title="Cloudiness"><CloudIcon/> {props.forecast.cloudiness}%</td>
+            <td title="Humidity"><InvertColorsIcon/> {props.forecast.humidity}%</td>
+            <td title="Wind"><AirIcon/> {props.forecast.windDirection}° {props.forecast.windSpeed}km/h</td>
         </tr>
     )
 }
