@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import DatePicker from "react-date-picker";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Results from "./Results";
@@ -8,11 +9,17 @@ import NightsStayIcon from '@mui/icons-material/NightsStay';
 import MyMap from "./Map";
 
 const App = () => {
-
     const [myOptions, setMyOptions] = useState([])
     const [selectedLocation2, setSelectedLocation2] = useState({})
     const [locations] = useState([])
     const [selectedLocation, setSelectedLocation] = useState({});
+    const today = new Date();
+    const [startDate, setStartDate] = useState(today);
+    const defaultEndDate = new Date();
+    defaultEndDate.setDate(defaultEndDate.getDate() + 2);
+    const [endDate, setEndDate] = useState(defaultEndDate);
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() + 13);
 
     const getDataFromAPI = () => {
         let searchString = document.getElementById('search-box').value
@@ -74,12 +81,12 @@ const App = () => {
         if (e.key === 'Enter') {
             findDetails(document.getElementById('search-box').value);
 
-            console.log('Setting selected location' )
+            console.log('Setting selected location')
         }
     }
 
     useEffect(() => {
-        console.log('Setting selected location2:' )
+        console.log('Setting selected location2:')
         setSelectedLocation2(selectedLocation);
     }, [selectedLocation])
 
@@ -87,21 +94,29 @@ const App = () => {
         <div>
             <MyMap location={selectedLocation2}/>
             <h1 className={'header'}><WbSunnyIcon/> Weather comparator <NightsStayIcon/></h1>
-            <div className={'search-box-style'}>
-                <Autocomplete
-                    id='search-box'
-                    autoComplete
-                    autoHighlight
-                    options={myOptions}
-                    renderInput={(params) => (
-                        <TextField  {...params}
-                                    onChange={getDataFromAPI}
-                                    onKeyPress={handleLocationChoice}
-                                    variant="outlined"
-                                    label="Search weather"
-                        />
-                    )}
-                />
+            <div className={'search-components'}>
+                <div className={'search-box-style'}>
+                    <Autocomplete
+                        id='search-box'
+                        autoComplete
+                        autoHighlight
+                        options={myOptions}
+                        renderInput={(params) => (
+                            <TextField  {...params}
+                                        onChange={getDataFromAPI}
+                                        onKeyPress={handleLocationChoice}
+                                        variant="outlined"
+                                        label="Search weather"
+                            />
+                        )}
+                    />
+                </div>
+                <div className={'date-pickers'}>
+                  Start date:  <DatePicker value={startDate} minDate={today} maxDate={maxDate}
+                                onChange={(date) => setStartDate(date)}/>
+                  End date:  <DatePicker value={endDate} minDate={startDate} maxDate={maxDate}
+                                onChange={(date) => setEndDate(date)}/>
+                </div>
             </div>
             <Results location={selectedLocation2}/>
         </div>

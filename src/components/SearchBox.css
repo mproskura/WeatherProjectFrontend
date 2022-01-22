@@ -1,13 +1,25 @@
 .search-box-style{
     alignment: right;
-    width: 60%;
+    width: 48%;
     margin-bottom: 30px;
-
+    padding-top: 35px;
     margin-left: 20%;
-    margin-right: 20%;
+    margin-right: 2%;
 
 }
 
 .header{
     margin-top: 20px;
+}
+
+.search-components{
+    display: flex;
+    flex-direction: row;
+}
+
+.date-pickers{
+    transform: scale(1,1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
 }
