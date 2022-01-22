@@ -7,18 +7,16 @@ import './ResultDetail.css'
 import ServiceLogo from "./ServiceLogo";
 import {useEffect, useState} from "react";
 
+
 const ResultDetail = (props) => {
 
     console.log("Result detail " + props.forecast.weatherSource)
     console.log("Temp " + props.forecast.airTemperature)
-    const [logo, setLogo] = useState();
-    // setLogo(ServiceLogo(props.forecast.weatherSource));
-
 
     return (
 
         <tr>
-            <td>{logo}</td>
+            <td><ServiceLogo weatherSource={props.forecast.weatherSource}/></td>
             <td><DeviceThermostatIcon/> {props.forecast.airTemperature}°C</td>
             <td><SpeedIcon/> {props.forecast.airPressure}hPa</td>
             <td><CloudIcon/> {props.forecast.cloudiness}%</td>

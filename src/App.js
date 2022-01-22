@@ -9,7 +9,7 @@ function App() {
     return (
         <div className="App">
             <SearchBox/>
-            <ServiceLogo serviceId={1}/>
+            {/*<ServiceLogo weatherSource={"1"}/>*/}
         </div>
     );
 }
