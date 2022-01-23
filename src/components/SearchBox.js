@@ -83,8 +83,10 @@ const App = () => {
     }
 
     useEffect(() => {
-        setSelectedLocation2(selectedLocation);
-    }, [selectedLocation])
+        if (startDate != null && endDate != null) {
+            setSelectedLocation2(selectedLocation);
+        }
+    }, [selectedLocation, startDate, endDate])
 
     return (
         <div>

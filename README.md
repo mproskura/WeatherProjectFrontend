@@ -1,121 +1,56 @@
 # Weather project
 
 ## Project objective
-The objective of the project
-
+The objective of the project is presenting weather reports from multiple sources in one place and in unified format. Additional goal was to create service that is open to easy implementation of additional weather services with publicly available APIs. 
 
 ## Functionality
-
+Following functionalities are available:
+* text-based location search
+* location presentation on a map
+* weather reports from 3 external services
+* data filtering 
+* caching of responses from external services to speed up application and limit number of queries
 
 ## Technology
+Weather project consists of separately developed frontend and backend applications. Backend application exposes API that frontend uses. 
 
 ### Backend
 
-
-Database agnostic. MySQL was used for development and PostgreSQL is used in deployment environment.
+* Java 11
+* Spring Web
+* Spring Boot
+* Spring Data
+* SQL Database (MySQL was used for development and PostgreSQL is used in deployment environment)
+* JUnit 5
+* Lombok
 
 ### Frontend
 
-Weather project consist of separately developed fronend and backend applications. 
+* React JS
+* Leaflet
+* Axios
+* Material UI
 
 ## Deployment
 Deploy version is available here:
+
 However, if you wanted to deploy your own, following steps are necessary:
- 1. Install SQL database compatible with Spring Data
- 2. Set up database in application.properties file of backend application
- 3. Deploy complied backend application to web server of your choice. Make sure it can access database and have port 8080 open on firewall.
- 4. Set up backend host in axios.js file
+ 1. Install SQL database compatible with Spring Data.
+ 2. Set up database in application.properties file of backend application.
+ 3. Deploy complied backend application to web server of your choice. Make sure it can access database and have ports necessary for API open on firewall.
+ 4. Set up backend host URL in axios.js file.
+ 5. Deploy complied frontend application to web server of your choice.
 
 ## Future development
 The project is finished and fully functional. Future development opportunities include:
- * Weather queries optimization on backend
+ * Weather queries optimization on backend side
  * Sources filtering on frontend
  * Historical data browsing
  * Integration with additional weather data sources
- * Native mobile apps
+ * Native mobile apps using existing API
+
+## Licence
+[MIT licence](https://choosealicense.com/licenses/mit/)
 
 ## Author
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Marek Proskura [mproskura@gmail.com](mailto:mproskura@gmail.com)
