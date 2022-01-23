@@ -5,8 +5,6 @@ import InvertColorsIcon from '@mui/icons-material/InvertColors';
 import AirIcon from '@mui/icons-material/Air';
 import './ResultDetail.css'
 import ServiceLogo from "./ServiceLogo";
-import {useEffect, useState} from "react";
-
 
 const ResultDetail = (props) => {
 

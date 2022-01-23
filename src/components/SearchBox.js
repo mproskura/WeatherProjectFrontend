@@ -7,6 +7,7 @@ import './SearchBox.css'
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import MyMap from "./Map";
+import instance from "../axios/axios";
 
 const App = () => {
     const [myOptions, setMyOptions] = useState([])
@@ -25,10 +26,10 @@ const App = () => {
         let searchString = document.getElementById('search-box').value
         if (searchString.length > 2) {
             setMyOptions([])
-            fetch('http://localhost:8080/location/' + searchString).then((response) => {
-                return response.json()
-            }).then((responseJson) => {
-                responseJson.forEach((item) => {
+
+            instance.get('/location/' + searchString).then((response) => {
+                let responseObject = response.data;
+                responseObject.forEach((item) => {
                     let location = new Object();
                     Object.entries(item).forEach(([key, value]) => {
                         if (key === 'name' || key === 'administrative_area' || key === 'country') {
@@ -71,8 +72,6 @@ const App = () => {
                         "displayString": item.displayString,
                     }
                 )
-                console.log(item.id);
-                console.log(item.displayString);
             }
         })
     }
@@ -80,13 +79,10 @@ const App = () => {
     const handleLocationChoice = (e) => {
         if (e.key === 'Enter') {
             findDetails(document.getElementById('search-box').value);
-
-            console.log('Setting selected location')
         }
     }
 
     useEffect(() => {
-        console.log('Setting selected location2:')
         setSelectedLocation2(selectedLocation);
     }, [selectedLocation])
 
@@ -112,10 +108,10 @@ const App = () => {
                     />
                 </div>
                 <div className={'date-pickers'}>
-                  Start date:  <DatePicker value={startDate} minDate={today} maxDate={maxDate} required={true}
-                                onChange={(date) => setStartDate(date)}/>
-                  End date:  <DatePicker value={endDate} minDate={startDate} maxDate={maxDate} required={true}
-                                onChange={(date) => setEndDate(date)}/>
+                    Start date: <DatePicker value={startDate} minDate={today} maxDate={maxDate} required={true}
+                                            onChange={(date) => setStartDate(date)}/>
+                    End date: <DatePicker value={endDate} minDate={startDate} maxDate={maxDate} required={true}
+                                          onChange={(date) => setEndDate(date)}/>
                 </div>
             </div>
             <Results location={selectedLocation2} startDate={startDate} endDate={endDate}/>

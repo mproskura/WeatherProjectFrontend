@@ -3,19 +3,10 @@ import {MapContainer, TileLayer, Marker, Popup, useMap} from 'react-leaflet';
 import './Map.css';
 
 
-// function SetView({coords}, newZoom) {
-//     const zoom = newZoom.valueOf();
-//     console.log("New zoom " + newZoom.toString() + zoom);
-//     const map = useMap();
-//     map.setView(coords, 1);
-//     return null;
-// }
-
 function SetView(props) {
     const coords =props.coords;
     const zoom = props.newZoom;
     const map = useMap();
-    //map.setView(coords, zoom);
     map.flyTo(coords, zoom )
     return null;
 }

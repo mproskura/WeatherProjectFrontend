@@ -1,17 +1,17 @@
 import {useEffect, useState} from "react";
 import classes from './ServiceLogo.module.css'
+import instance from "../axios/axios";
 
 const ServiceLogo = (props) => {
     const [serviceLogo, setServiceLogo] = useState();
 
-    useEffect(()=>{
+    useEffect(() => {
         if (props.weatherSource) {
-            const url = "http://localhost:8080/logo/" + props.weatherSource;
-            fetch(url)
-                .then(response => response.blob())
-                .then(image => {
-                    setServiceLogo(URL.createObjectURL(image));
-                });
+            instance.get("/logo/" + props.weatherSource,  {responseType: 'blob'})
+                .then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    setServiceLogo(url);
+                })
         }
     }, [props.weatherSource])
 

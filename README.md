@@ -1,3 +1,54 @@
+# Weather project
+
+## Project objective
+The objective of the project
+
+
+## Functionality
+
+
+## Technology
+
+### Backend
+
+
+Database agnostic. MySQL was used for development and PostgreSQL is used in deployment environment.
+
+### Frontend
+
+Weather project consist of separately developed fronend and backend applications. 
+
+## Deployment
+Deploy version is available here:
+However, if you wanted to deploy your own, following steps are necessary:
+ 1. Install SQL database compatible with Spring Data
+ 2. Set up database in application.properties file of backend application
+ 3. Deploy complied backend application to web server of your choice. Make sure it can access database and have port 8080 open on firewall.
+ 4. Set up backend host in axios.js file
+
+## Future development
+The project is finished and fully functional. Future development opportunities include:
+ * Weather queries optimization on backend
+ * Sources filtering on frontend
+ * Historical data browsing
+ * Integration with additional weather data sources
+ * Native mobile apps
+
+## Author
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

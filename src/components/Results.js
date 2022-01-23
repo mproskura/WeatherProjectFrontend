@@ -16,20 +16,15 @@ const Results = (props) => {
         setResultList([]);
         let newResults = [];
         while (loopDate < loopEndDate) {
-            console.log("Data z petli: " + dateFormatter(loopDate));
             let formattedDate = dateFormatter(loopDate);
-            console.log("Formatted date  " + formattedDate);
             dates.push(formattedDate);
             let weekdayName = weekday[loopDate.getDay()];
-            console.log("Weekday name " + weekdayName);
             let resultByDate = <ResultByDate id={props.location.id} date={formattedDate} day={weekdayName}/>;
             newResults.push(resultByDate);
             let newDate = loopDate.setDate(loopDate.getDate() + 1);
             loopDate = new Date(newDate);
         }
         setResultList(newResults);
-
-        console.log("Dlugosc listy " + resultList.length);
     }, [props])
 
     function dateFormatter(date) {
