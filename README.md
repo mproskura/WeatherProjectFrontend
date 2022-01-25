@@ -1,4 +1,4 @@
-# Weather project
+# Weather comparator project
 
 ## Project objective
 The objective of the project is presenting weather reports from multiple sources in one place and in unified format. Additional goal was to create service that is open to easy implementation of additional weather services with publicly available APIs. 
@@ -32,7 +32,8 @@ Weather project consists of separately developed frontend and backend applicatio
 * Material UI
 
 ## Deployment
-Deploy version is available here:
+Deploy version is available here: [https://weathercomparator.herokuapp.com/](https://weathercomparator.herokuapp.com/)
+Due to Heroku limitations Yr.no forecast is not available in deployed version.
 
 However, if you wanted to deploy your own, following steps are necessary:
  1. Install SQL database compatible with Spring Data.
